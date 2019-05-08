@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import Vuex from 'vuex'
+import Axios from 'axios'
 //import NProgress from 'nprogress'
 //import 'nprogress/nprogress.css'
 import routes from './routes'
@@ -17,7 +18,8 @@ import 'font-awesome/css/font-awesome.min.css'
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
-
+Vue.prototype.$axios = Axios
+Axios.defaults.baseURL = "http://127.0.0.1/"
 //NProgress.configure({ showSpinner: false });
 
 const router = new VueRouter({

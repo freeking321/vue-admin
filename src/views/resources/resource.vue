@@ -1,29 +1,34 @@
 <template>
   <section>
-    <el-tabs type="border-card">
-      <el-tab-pane>
-        <span slot="label"><i class="el-icon-date"></i> 我的行程</span>
-        我的行程
-      </el-tab-pane>
-      <el-tab-pane label="ECS">消息中心</el-tab-pane>
-      <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-      <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+    <el-tabs type="border-card" @tab-click="tabChange">
+      <el-tab-pane label="ECS" name="ecsTypeList"></el-tab-pane>
+      <el-tab-pane label="Memcache" name="childTwo"></el-tab-pane>
+      <div :is="currentView"></div>
     </el-tabs>
-    <div class="line"></div>
   </section>
 </template>
 <script>
+    import ecsTypeList from '@/components/ecsTypeList.vue';
+    import childTwo from '@/components/childTwo.vue';
     export default {
         data() {
             return {
-                activeIndex: '1',
-                activeIndex2: '1'
+                ecsTypeList: 'ecsTypeList',
+                childTwo: 'childTwo',
+                currentView: 'ecsTypeList'
             };
         },
+
         methods: {
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
+            tabChange(tab) {
+                console.log(tab.name);
+                this.currentView = tab.name;
             }
+        },
+
+        components: {
+            ecsTypeList,
+            childTwo,
         }
     }
 </script>
